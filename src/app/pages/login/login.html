@@ -10,15 +10,20 @@
 
 <ion-content>
   <div class="login-logo">
-    <img src="assets/img/appicon.svg" alt="Ionic logo">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <img src="assets/img/appicon.svg" alt="Ionic logo">
+    </div>
   </div>
+
+  <h4>Google Sign in</h4>
+  <img id="googleSignInImg" src="../../../assets/img/icons/googleplus.png" (click)="loginGoogle()">
 
   <form #loginForm="ngForm" novalidate>
     <ion-list>
       <ion-item>
         <ion-label position="stacked" color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
-          required>
+        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false"
+          autocapitalize="off" required>
         </ion-input>
       </ion-item>
 

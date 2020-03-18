@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserData } from '../../providers/user-data';
 
 import { UserOptions } from '../../interfaces/user-options';
+import { AuthService } from '../../core/service/auth.service';
 
 
 
@@ -19,15 +20,16 @@ export class SignupPage {
 
   constructor(
     public router: Router,
-    public userData: UserData
-  ) {}
+    public userData: UserData,
+    private authService: AuthService
+  ) { }
 
   onSignup(form: NgForm) {
     this.submitted = true;
 
     if (form.valid) {
-      this.userData.signup(this.signup.username);
-      this.router.navigateByUrl('/app/tabs/schedule');
+      // this.userData.signup(this.signup.username);
+      this.authService.signupEmail(this.signup.username, this.signup.password);
     }
   }
 }

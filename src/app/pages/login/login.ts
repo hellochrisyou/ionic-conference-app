@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserData } from '../../providers/user-data';
 
 import { UserOptions } from '../../interfaces/user-options';
+import { AuthService } from '../../core/service/auth.service';
 
 
 
@@ -19,18 +20,22 @@ export class LoginPage {
 
   constructor(
     public userData: UserData,
-    public router: Router
+    public router: Router,
+    private authService: AuthService
   ) { }
 
   onLogin(form: NgForm) {
     this.submitted = true;
 
     if (form.valid) {
+      this.authService.signinEmail(this.login.username, this.login.password);
       this.userData.login(this.login.username);
       this.router.navigateByUrl('/app/tabs/schedule');
     }
   }
-
+  public loginGoogle(): void {
+    this.authService.signinGoogle();
+  }
   onSignup() {
     this.router.navigateByUrl('/signup');
   }

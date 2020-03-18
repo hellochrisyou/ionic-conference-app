@@ -5,12 +5,13 @@ import { IonicModule } from '@ionic/angular';
 
 import { LoginPage } from './login';
 import { LoginPageRoutingModule } from './login-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
     FormsModule,
     IonicModule,
+    SharedModule,
     LoginPageRoutingModule
   ],
   declarations: [
