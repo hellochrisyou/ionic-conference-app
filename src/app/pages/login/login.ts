@@ -30,7 +30,7 @@ export class LoginPage {
     if (form.valid) {
       this.authService.signinEmail(this.login.username, this.login.password);
       this.userData.login(this.login.username);
-      this.router.navigateByUrl('/app/tabs/schedule');
+      this.router.navigateByUrl('/app/tabs/friends');
     }
   }
   public loginGoogle(): void {

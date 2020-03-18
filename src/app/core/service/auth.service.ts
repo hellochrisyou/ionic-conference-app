@@ -17,6 +17,8 @@ export class AuthService {
   // tslint:disable-next-line: variable-name
   private _user: Observable<User>;
 
+  private usersCollection: any;
+
   private newUser: User;
   public get user(): Observable<User> {
     return this._user;
@@ -79,7 +81,7 @@ export class AuthService {
         this.presentToast('You have registered an account');
         // this.snackBar.open('Registration', 'SUCCESS', {
         // });
-        this.router.navigateByUrl('/app/tabs/schedule');
+        this.router.navigateByUrl('/app/tabs/friends');
       })
       .catch(error => {
         // this.signupErrorPopup(error.message);
@@ -92,21 +94,27 @@ export class AuthService {
         this.updateUserData(credential.user);
       });
   }
-
   // Firebase Google Sign-in
   public signinGoogle() {
     console.log('hello');
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((credential) => {
-      // this.checkUserExists(credential.user.email, credential.user.displayName, "https://material.angular.io/assets/img/examples/shiba2.jpg");
-      this.router.navigateByUrl('/app/tabs/schedule');
+      this.usersCollection = this.afs.collection('users').doc(credential.user.email).set({
+        displayName: credential.user.displayName,
+        email: credential.user.email,
+        photURL: credential.user.photoURL,
+        uId: credential.user.uid
+      });
     });
+    console.log('usercollection', this.usersCollection);
+    this.router.navigateByUrl('/app/tabs/friends');
+
     // return this.OAuthProvider(new this.authState.GoogleAuthProvider())
     // .then(res => { }).catch(error => { });
   }
 
   public signOut() {
     this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
       // window.location.reload();
     });
   }
@@ -119,7 +127,7 @@ export class AuthService {
       .then(credential => {
         this.presentToast('You are signed in');
         // this.checkUserExists(credential.user.email, credential.user.displayName, "https://material.angular.io/assets/img/examples/shiba2.jpg");
-        this.router.navigateByUrl('/app/tabs/schedule');
+        this.router.navigateByUrl('/app/tabs/friends');
         window.location.reload();
       })
       .catch(err => { });
@@ -139,8 +147,9 @@ export class AuthService {
 
   public updateUserData(user) {
     // Sets user data to firestore on login
+    console.log('auth user service update', user);
 
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.email}`);
 
     const data: User = {
       uId: user.uId,
@@ -151,22 +160,21 @@ export class AuthService {
     return userRef.set(data, { merge: true });
   }
 
+
   get userData(): any {
-    if (!this.isAuthenticated) {
-      return [];
-    } else {
-      return [
-        {
-          uid: this.authState.uid,
-          displayName: this.authState.displayName,
-          email: this.authState.email,
-          phoneNumber: this.authState.phoneNumber,
-          photoURL: this.authState.photoURL,
-          country: this.authState.country
-        }
-      ]
-    };
+    return [
+      {
+        uid: this.authState.uid,
+        displayName: this.authState.displayName,
+        email: this.authState.email,
+        phoneNumber: this.authState.phoneNumber,
+        photoURL: this.authState.photoURL,
+        country: this.authState.country
+      }
+    ];
   }
+
+
   public checkUserExists(argEmail: string, argDisplayName: string, argPhotoUrl: string): void {
     console.log('begin, check user exists');
 

@@ -10,14 +10,12 @@
 
 <ion-content>
   <div class="login-logo">
-    <div fxLayout="row" fxLayoutAlign="center center">
-      <img src="assets/img/appicon.svg" alt="Ionic logo">
-    </div>
+    <img src="assets/img/appicon.svg" alt="Ionic logo">
   </div>
-
-  <h4>Google Sign in</h4>
-  <img id="googleSignInImg" src="../../../assets/img/icons/googleplus.png" (click)="loginGoogle()">
-
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <h4>Google Sign in</h4>
+    <img id="googleSignInImg" src="../../../assets/img/icons/googleplus.png" (click)="loginGoogle()">
+  </div>
   <form #loginForm="ngForm" novalidate>
     <ion-list>
       <ion-item>

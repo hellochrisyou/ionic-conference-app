@@ -69,14 +69,16 @@ ion-toolbar ion-menu-button {
 
 .about-info p {
   line-height: 130%;
-
+  text-align: left;
   color: var(--ion-color-dark);
 }
 
 .about-info ion-icon {
   margin-inline-end: 32px;
 }
-
+#about-title {
+  text-align: center;
+}
 /*
  * iOS Only
  */

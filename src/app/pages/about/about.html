@@ -21,57 +21,22 @@
   </div>
 
   <div class="about-info">
-    <h3 class="ion-padding-top ion-padding-start">About</h3>
+    <h3 id="about-title" class="ion-padding-top ion-padding-start">About</h3>
 
     <p class="ion-padding-start ion-padding-end">
-      The Ionic Conference is a one-day conference on {{ conferenceDate | date: 'mediumDate' }} featuring talks from the Ionic team. It is focused on Ionic applications being built with Ionic Framework. This includes migrating apps to the latest version of the framework, Angular concepts, Webpack, Sass, and many other technologies used in Ionic 2. Tickets are completely sold out, and we’re expecting more than 1000 developers – making this the largest Ionic conference ever!
+      <!-- The Ionic Conference is a one-day conference on {{ conferenceDate | date: 'mediumDate' }} featuring talks from the Ionic team. It is focused on Ionic applications being built with Ionic Framework. This includes migrating apps to the latest version of the framework, Angular concepts, Webpack, Sass, and many other technologies used in Ionic 2. Tickets are completely sold out, and we’re expecting more than 1000 developers – making this the largest Ionic conference ever! -->
+      <br>&nbsp;&nbsp;&nbsp;&nbsp; This App is designed for messaging between friends and others.<br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp; It was developed
+      by
+      Chris You and is a side
+      project
+      in discovering how to use Ionic with Angular 2+. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;In conjunction with Firebase for
+      authentication,
+      this app
+      provides the ability to message, view message history, and a history of locations from where your messages were
+      sent and received.
     </p>
 
-    <h3 class="ion-padding-top ion-padding-start">Details</h3>
 
-    <ion-list lines="none">
-      <ion-item>
-        <ion-label>
-          Location
-        </ion-label>
-        <ion-select [(ngModel)]="location" [interfaceOptions]="selectOptions">
-          <ion-select-option value="madison">Madison, WI</ion-select-option>
-          <ion-select-option value="austin">Austin, TX</ion-select-option>
-          <ion-select-option value="chicago">Chicago, IL</ion-select-option>
-          <ion-select-option value="seattle">Seattle, WA</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          Date
-        </ion-label>
-        <ion-datetime
-          displayFormat="MMM DD, YYYY"
-          max="2056"
-          [(ngModel)]="conferenceDate">
-        </ion-datetime>
-      </ion-item>
-    </ion-list>
-
-    <h3 class="ion-padding-top ion-padding-start">Internet</h3>
-
-    <ion-list lines="none">
-      <ion-item>
-        <ion-label>
-          Wifi network
-        </ion-label>
-        <ion-label class="ion-text-end">
-          ica{{conferenceDate | date: 'y'}}
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          Password
-        </ion-label>
-        <ion-label class="ion-text-end">
-          makegoodthings
-        </ion-label>
-      </ion-item>
-    </ion-list>
   </div>
 </ion-content>

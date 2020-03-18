@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class UserData {
+
   favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
   HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
@@ -54,6 +55,7 @@ export class UserData {
   setUsername(username: string): Promise<any> {
     return this.storage.set('username', username);
   }
+
 
   getUsername(): Promise<string> {
     return this.storage.get('username').then((value) => {

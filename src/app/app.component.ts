@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
+import { AuthService } from './core/service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -20,13 +21,8 @@ import { UserData } from './providers/user-data';
 export class AppComponent implements OnInit {
   appPages = [
     {
-      title: 'Schedule',
-      url: '/app/tabs/schedule',
-      icon: 'calendar'
-    },
-    {
-      title: 'Speakers',
-      url: '/app/tabs/speakers',
+      title: 'Friends',
+      url: '/app/tabs/friends',
       icon: 'people'
     },
     {
@@ -44,6 +40,7 @@ export class AppComponent implements OnInit {
   dark = false;
 
   constructor(
+    public authService: AuthService,
     private menu: MenuController,
     private platform: Platform,
     private router: Router,
@@ -116,9 +113,7 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
-    });
+    this.authService.signOut();
   }
 
   openTutorial() {

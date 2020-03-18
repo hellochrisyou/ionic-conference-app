@@ -1,13 +1,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDzoY3b-aSdH__cfRHXcPDNtjGhmnUw0E0",
-    authDomain: "cyou-messaging-app.firebaseapp.com",
-    databaseURL: "https://cyou-messaging-app.firebaseio.com",
-    projectId: "cyou-messaging-app",
-    storageBucket: "cyou-messaging-app.appspot.com",
-    messagingSenderId: "669234688220",
-    appId: "1:669234688220:web:736577f1e53cd968364419",
-    measurementId: "G-MYMG7S8NHD"
+    apiKey: "AIzaSyD07raaGAV4MzeTsXrKzxBzVmR4-5skdrk",
+    authDomain: "messaging-app-eee34.firebaseapp.com",
+    databaseURL: "https://messaging-app-eee34.firebaseio.com",
+    projectId: "messaging-app-eee34",
+    storageBucket: "messaging-app-eee34.appspot.com",
+    messagingSenderId: "781193777566",
+    appId: "1:781193777566:web:0661e6b4ec922da868468f",
+    measurementId: "G-BQQTS0QJM2"
   }
 };

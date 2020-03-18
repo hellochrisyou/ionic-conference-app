@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SupportPage } from './support';
 import { SupportPageRoutingModule } from './support-routing.module';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { SupportPageRoutingModule } from './support-routing.module';
   ],
   declarations: [
     SupportPage,
+  ],
+  providers: [
+    EmailComposer
   ]
 })
 export class SupportModule { }
